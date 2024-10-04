@@ -105,7 +105,7 @@ func ParentHeaderView() -> some View {
                 .font(.custom(outfitRegular, size: 20))
                 .foregroundColor(.gray)
             
-            Text("Mehmet Ali")
+            Text("Mehmet")
                 .font(.custom(outfitRegular, size: 32))
                 .foregroundColor(.black)
         }
