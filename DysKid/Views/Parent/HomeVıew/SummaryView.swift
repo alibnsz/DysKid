@@ -12,40 +12,6 @@ struct SummaryView: View {
     
     var body: some View {
         VStack {
-            // Header
-            HStack {
-                Text("Ozet")
-                    .font(.custom(outfitThin, size: 36)) // Dinamik yazı boyutu
-                    
-                
-                Spacer()
-                
-                HStack {
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 1)
-                            .frame(width: 55, height: 55)
-                        .foregroundColor(.black.opacity(0.1))
-                        Image(systemName: "person.2")
-                    }
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 1)
-                            .frame(width: 55, height: 55)
-                        .foregroundColor(.black.opacity(0.1))
-                        Image(systemName: "bell")
-
-                    }
-                    
-                }
-                .font(.title2)
-            }
-            
-            .padding()
-            Divider()
-                .padding(.horizontal)
-
-            // Date and Set Goal Button
             HStack {
                 VStack(alignment: .leading) {
                     Text("Bugün")

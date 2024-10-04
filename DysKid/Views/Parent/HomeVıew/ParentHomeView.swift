@@ -1,4 +1,11 @@
 //
+//  ParentHomeView.swift
+//  DysKid
+//
+//  Created by Mehmet Ali Bunsuz on 4.10.2024.
+//
+
+//
 //  TeacherHomeView.swift
 //  DysKid
 //
@@ -8,23 +15,23 @@
 import SwiftUI
 import FirebaseAuth
 
-struct HomeView: View {
+struct ParentHomeView: View {
     
-    @State private var activeTab: TeacherTab = .summary
-    var offsetObserver = PageOffsetObserver()
+    @State private var activeTab: ParentTab = .summary
+    var offsetObserverParent = PageOffsetObserverParent()
     
     var body: some View {
         VStack(spacing: 15) {
             VStack {
-                HeaderView()
-                Tabbar(.gray)
+                ParentHeaderView()
+                TabbarParent(.gray)
                     .overlay{
-                        if let collectionViewBounds = offsetObserver.collectionView?.bounds {
+                        if let collectionViewBounds = offsetObserverParent.collectionView?.bounds {
                             GeometryReader {
                                 let width = $0.size.width
                                 let tabCount = CGFloat(TeacherTab.allCases.count)
                                 let  capsuleWidth = width / tabCount
-                                let progress = offsetObserver.offset / collectionViewBounds.width
+                                let progress = offsetObserverParent.offset / collectionViewBounds.width
                                 
                                 Capsule()
                                     .fill(.white)
@@ -33,7 +40,7 @@ struct HomeView: View {
                                     .frame(width: capsuleWidth)
                                     .offset(x: progress * capsuleWidth)
                                 
-                                Tabbar(.white, .semibold)
+                                TabbarParent(.white, .semibold)
                                     .mask(alignment: .leading) {
                                         Capsule()
                                             .frame(width: capsuleWidth)
@@ -49,14 +56,14 @@ struct HomeView: View {
                     .padding([.horizontal, .top], 15)
                 
                 TabView(selection: $activeTab) {
-                    ForEach(TeacherTab.allCases, id: \.rawValue) { tab in
+                    ForEach(ParentTab.allCases, id: \.rawValue) { tab in
                         tab.view
                             .tag(tab)
                             .background{
-                                if !offsetObserver.isObserving {
+                                if !offsetObserverParent.isObserving {
                                     findCollectionView{
-                                        offsetObserver.collectionView = $0
-                                        offsetObserver.observe()
+                                        offsetObserverParent.collectionView = $0
+                                        offsetObserverParent.observe()
                                     }
                                 }
                             }
@@ -69,9 +76,9 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    func Tabbar(_ tint : Color, _ weight: Font.Weight = .regular) -> some View {
+    func TabbarParent(_ tint : Color, _ weight: Font.Weight = .regular) -> some View {
         HStack(spacing: 0) {
-            ForEach(TeacherTab.allCases, id: \.rawValue) { tab in
+            ForEach(ParentTab.allCases, id: \.rawValue) { tab in
                 Text(tab.rawValue)
                     .font(.callout)
                     .fontWeight(weight)
@@ -91,7 +98,7 @@ struct HomeView: View {
 }
 
 @ViewBuilder
-func HeaderView() -> some View {
+func ParentHeaderView() -> some View {
     HStack {
         VStack(alignment: .leading) {
             Text("Hoşgeldin,")
@@ -128,7 +135,7 @@ func HeaderView() -> some View {
 
 
 @Observable
-class PageOffsetObserver: NSObject{
+class PageOffsetObserverParent: NSObject{
     var collectionView: UICollectionView?
     var offset: CGFloat = 0
     private(set) var isObserving: Bool = false
@@ -156,7 +163,7 @@ class PageOffsetObserver: NSObject{
     
 }
 
-struct findCollectionView: UIViewRepresentable {
+struct findCollectionViewParent: UIViewRepresentable {
     var result: (UICollectionView) -> ()
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
@@ -178,7 +185,7 @@ struct findCollectionView: UIViewRepresentable {
 }
 
 extension UIView {
-     var collectionSuperView: UICollectionView? {
+     var collectionSuperViewParent: UICollectionView? {
         if let collectionView = superview as? UICollectionView {
              return collectionView
          }
@@ -187,10 +194,6 @@ extension UIView {
 }
 
 
-
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
+#Preview {
+    ParentHomeView()
 }

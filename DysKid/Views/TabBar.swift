@@ -32,14 +32,14 @@ struct TeacherTabView: View {
 struct ParentTabView: View {
     var body: some View {
         TabView {
-            SummaryView()
+            ParentHomeView()
                 .tabItem {
                     Label("Ana", systemImage: "house")
                 }
             
-            Text("Çocuk Durumu")
+            EducationView()
                 .tabItem {
-                    Label("Durum", systemImage: "book")
+                    Label("Eğitim", systemImage: "book")
                 }
             
             Text("Eğitim İçeriği")
