@@ -36,20 +36,20 @@ struct NewIntroView: View {
                 }
                 
                 HStack(alignment: .top) {
-                    Image("logo")
+                    Image("logoTrans")
                         .resizable()
-                        .frame(width: 55, height: 45)
+                        .frame(width: 30, height: 30)
                         .padding(.leading, 16)
                     
                     VStack(alignment: .leading) {
                         Text("DysKid")
-                            .font(.custom(outfitRegular, size: 18))
+                            .font(.custom(outfitRegular, size: 14))
                             .foregroundColor(.white)
                         Text("Dyslexia & ADHD")
-                            .font(.custom(outfitLight, size: 12))
+                            .font(.custom(outfitLight, size: 10))
                             .foregroundColor(.white)
                     }
-                    .padding(.top, 3)
+                    .padding(.top, -1)
                 }
                 .padding(.top, -190)
                 .offset(x: isVisible ? -125 : -200)

@@ -22,11 +22,17 @@ struct SplashScreenView: View {
                 }
             } else {
                 VStack {
-                    Image("logo-black")
+                    Image("logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 250, height: 200)
+                        .frame(width: 92, height: 95)
                         .transition(.opacity)
+                    Text("DysKid")
+                        .font(.custom(outfitLight, size: 32))
+                    Text("Dyslexia & ADHD")
+                        .font(.custom(outfitExtra, size: 12))
+                        
+                        
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white)
