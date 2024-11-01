@@ -46,17 +46,12 @@ struct TasksView: View {
         .padding([.vertical, .leading], 35)
         .padding(.top, 15)
         .overlay {
-            if tasks.isEmpty {
-                Image("taskBackround")
-                    .resizable()
-                    .frame(width: 350, height: 350)
-                    .padding(.top, 420)
-                    
+            if tasks.isEmpty {                    
             }
         }
     }
 }
 
 #Preview {
-    ContentView()
+    TaskHome()
 }

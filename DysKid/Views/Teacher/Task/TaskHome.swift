@@ -41,7 +41,7 @@ struct TaskHome: View {
                     .font(.custom(outfitRegular, size: 16))
                     .foregroundStyle(.white)
                     .frame(width: 55, height: 55)
-                    .background(Color("ColorSecondaryBlack").shadow(.drop(color: Color("ColorSecondaryBlack").opacity(0.25), radius: 5,x: 10, y: 10)), in: .circle)
+                    .background(Color("CustomOrange").shadow(.drop(color: Color("ColorSecondaryBlack").opacity(0.25), radius: 5,x: 10, y: 10)), in: .circle)
             }
             .padding(15)
         })
@@ -128,7 +128,7 @@ struct TaskHome: View {
                         .background(content: {
                             if isSameDate(day.date, currentDate) {
                                 Circle()
-                                    .fill(Color("ColorSecondaryBlack"))
+                                    .fill(Color("CustomOrange"))
                                     .matchedGeometryEffect(id: "TABINDICATOR", in: animation)
                             }
                             // indicator to shaw, which is todays date
@@ -187,5 +187,5 @@ struct TaskHome: View {
 }
 
 #Preview {
-    ContentView()
+    TaskHome()
 }
