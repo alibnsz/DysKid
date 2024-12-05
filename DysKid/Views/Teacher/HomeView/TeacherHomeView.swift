@@ -16,7 +16,6 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 15) {
             VStack {
-                HeaderView()
                 Tabbar(.gray)
                     .overlay{
                         if let collectionViewBounds = offsetObserver.collectionView?.bounds {
@@ -89,43 +88,6 @@ struct HomeView: View {
         }
     }
 }
-
-@ViewBuilder
-func HeaderView() -> some View {
-    HStack {
-        VStack(alignment: .leading) {
-            Text("Hoşgeldin,")
-                .font(.custom(outfitRegular, size: 20))
-                .foregroundColor(.gray)
-            
-            Text("Mehmet Ali")
-                .font(.custom(outfitRegular, size: 32))
-                .foregroundColor(.black)
-        }
-        .padding(.leading)
-
-        Spacer()
-
-        Image(systemName: "bell")
-            .resizable()
-            .frame(width: 24, height: 24)
-            .padding(.trailing)
-            .foregroundColor(.gray)
-            .onTapGesture {
-                // Firebase'den çıkış işlemi
-                do {
-                    try Auth.auth().signOut() // Firebase'den çıkış yap
-                    // Yönlendirme işlemi
-                    // Burada kullanıcının yönlendirileceği sayfayı belirtin
-                    // Örneğin, bir state değişkeni kullanarak yönlendirebilirsiniz
-                } catch {
-                    print("Çıkış yaparken hata oluştu: \(error.localizedDescription)")
-                }
-            }
-    }
-}
-
-
 
 @Observable
 class PageOffsetObserver: NSObject{
